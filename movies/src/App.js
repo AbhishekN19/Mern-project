@@ -10,6 +10,7 @@ import { adminAction, userActions } from "./store";
 import Booking from "./components/Movies/Bookings/Booking";
 import UserProfile from "./profile/UserProfile";
 import AddMovie from "./components/Movies/AddMovie";
+import AdminProfile from "./profile/AdminProfile";
 
 
 
@@ -33,11 +34,21 @@ function App() {
       <Routes>
         <Route path="/" element ={ <HomePage />} />
         <Route path="/movies" element ={ <Movies />} />
+        {!isUserLoggedIn && !isAdminLoggedIn && <>
+        {" "}
         <Route path="/admin" element ={ <Admin />} />
         <Route path="/auth" element ={ <Auth />} />
+        </>}
+        {isUserLoggedIn && !isAdminLoggedIn && <>
+        {" "}
         <Route path="/user" element ={ <UserProfile />} />
         <Route path="/add" element ={ <AddMovie />} />
+        </>}
+        {isAdminLoggedIn && !isUserLoggedIn && <> 
+        {" "}
+        <Route path="/user-admin" element ={ <AdminProfile />} />
         <Route path="/booking/:id" element={<Booking />} />
+        </>}
 
 
       </Routes>

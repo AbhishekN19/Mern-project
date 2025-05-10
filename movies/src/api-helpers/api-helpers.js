@@ -131,3 +131,18 @@ export const addMovie = async(data) => {
     const resData = await res.data;
     return resData;
 }
+
+export const getAdminById = async () => {
+    const adminId = localStorage.getItem("adminId");
+    const res = await axios 
+    .get(`/admin/${adminId}`)
+    .catch((err) => console.log(err));
+    
+    if(res.status!== 200) {
+        return console.log("Unexpected Error Occurred");
+        
+    }
+    
+    const resData = await res.data;
+    return res.data;
+}

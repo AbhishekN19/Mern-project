@@ -8,10 +8,6 @@ import bookingsRouter from "./routes/booking-routes.js";
 dotenv.config();
 const app = express();
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-header("Access-Control-Allow-Headers: Authorization");
-
 //middlewares
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', req.headers.origin);
